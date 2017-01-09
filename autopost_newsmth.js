@@ -13,7 +13,7 @@ function login() {
     request.post({
         url: loginUrl,
         form: {
-            id: 'afhs324',
+            id: '********',
             passwd: '******',
             save: 'on'
         }
