@@ -33,11 +33,11 @@ var detailCrawler = new Crawler({
                 var stars = $("#basic-info").find(".brief-info").find("span").eq(0).attr("title");
                 var address = $(".expand-info").eq(0).find(".item").text() 
                 var tel = $(".expand-info").eq(1).find(".item").text() 
-                /*
-                var recommend1 = $(".recommend-name").find(".item").eq(0).attr("title") ;
-                var recommend2 = $(".recommend-name").find(".item").eq(1).attr("title") ;
-                var recommend3 = $(".recommend-name").find(".item").eq(2).attr("title") ;
-                */
+
+                var kouweiScore = $("#comment_score").find(".item").eq(0).text().replace("口味：","").trim();
+                var huanjingScore = $("#comment_score").find(".item").eq(1).text().replace("环境：","").trim();
+                var fuwuScore = $("#comment_score").find(".item").eq(2).text().replace("服务：","").trim();
+
                 var object  = map[id];
                 object["location"] = bread1.replace(/\n/g,'').trim();
                 object["shangquan"] = bread2.replace(/\n/g,'').trim();
@@ -45,8 +45,10 @@ var detailCrawler = new Crawler({
                 object["address"] = address.replace(/\n/g,'').trim();
                 object["tel"] = tel;
                 object["stars"] = stars;
+                object["kouweiScore"] = kouweiScore;
+                object["huanjingScore"] = huanjingScore;
+                object["fuwuScore"] = fuwuScore;
                 console.log("detail:",object);
-                console.log("stars:",stars);
                 var output = [];
                 output.push(object["id"]);
                 output.push(object["url"]);
@@ -58,6 +60,9 @@ var detailCrawler = new Crawler({
                 output.push(object["address"]);
                 output.push(object["tel"]);
                 output.push(object["stars"]);
+                output.push(object["kouweiScore"]);
+                output.push(object["huanjingScore"]);
+                output.push(object["fuwuScore"]);
                 console.log(output.join(","));
                 writeFile(output.join(",")+"\r\n");
                 // console.log(name,money,bread1,bread2,bread3,bread4,bread5);
