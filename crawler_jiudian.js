@@ -22,7 +22,8 @@ var detailCrawler = new Crawler({
             var $ = res.$;
             if($){
                 var url = res.request.uri.path;
-                console.log("url:",url);
+                console.log("beigin url:",url);
+                console.log("...........");
                 var id = url.replace('/shop/','').trim();
                 var money =  $("#avgPriceTitle").text().replace("￥","");;
                 var bread1 = $(".breadcrumb").find("a").eq(0).text();
@@ -48,7 +49,6 @@ var detailCrawler = new Crawler({
                 object["kouweiScore"] = kouweiScore;
                 object["huanjingScore"] = huanjingScore;
                 object["fuwuScore"] = fuwuScore;
-                console.log("detail:",object);
                 var output = [];
                 output.push(object["id"]);
                 output.push(object["url"]);
@@ -63,9 +63,7 @@ var detailCrawler = new Crawler({
                 output.push(object["kouweiScore"]);
                 output.push(object["huanjingScore"]);
                 output.push(object["fuwuScore"]);
-                console.log(output.join(","));
                 writeFile(output.join(",")+"\r\n");
-                // console.log(name,money,bread1,bread2,bread3,bread4,bread5);
             }
         }
         done();
@@ -81,6 +79,8 @@ var listCrawler = new Crawler({
             console.error(error);
         } else {
             var $ = res.$;
+            var url = res.request.uri.path;
+            console.log("list uri:",url);
             $("#shop-all-list").find('li').each(function (index, a) {
                 var url = $(this).find(".tit").find("a").eq(0).attr("href");
                 var name = $(this).find(".tit").find("a").eq(0).attr("title");
@@ -105,9 +105,8 @@ var listCrawler = new Crawler({
         done();
     }
 });
-for(var j = 1 ;j<10;j++)
-for(var i = 0 ;i<10;i++) 
-
+for(var j = 1 ;j<600;j++)
+for(var i = 0 ;i<50;i++) 
 {
     if(i>0){
         listCrawler.queue('http://www.dianping.com/search/category/'+j+'/10/p'+(i+1));
@@ -117,9 +116,11 @@ for(var i = 0 ;i<10;i++)
     }
 }
 
-//detailCrawler.queue('http://m.newsmth.net/article/Career_Upgrade/486708');
-console.log("........");
-
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(1337, '127.0.0.1');
 function writeFile(data){
     fs.appendFile('./jiudina.csv',data,'utf8',function(err){  
     if(err)  
