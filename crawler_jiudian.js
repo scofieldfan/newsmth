@@ -122,7 +122,7 @@ var detailSet = new Set(readFile('./detailIds.csv').split(","));
 console.log("listSet",listSet);
 console.log("detailSet",detailSet);
 function init() {
-    for (var city = 1; city < 600; city++)
+    for (var city = 300; city < 600; city++)
         for (var page = 0; page < 50; page++) {
             var path = '';
             if (page > 0) {
