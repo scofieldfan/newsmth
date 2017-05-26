@@ -13,8 +13,8 @@ function login() {
     request.post({
         url: loginUrl,
         form: {
-            id: 'afhs324',
-            passwd: '1985919',
+            id: '****',
+            passwd: '****',
             save: 'on'
         }
     }).on('response', function (response) {
