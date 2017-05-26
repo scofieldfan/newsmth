@@ -8,13 +8,13 @@ require('request-debug')(request);
 
 
 var loginUrl = 'http://m.newsmth.net/user/login';
-var postUrl = 'http://www.newsmth.net/nForum/article/HuiLongGuan/ajax_post.json';
+var postUrl = 'http://www.newsmth.net/nForum/article/HouseRent/ajax_post.json';
 function login() {
     request.post({
         url: loginUrl,
         form: {
-            id: '********',
-            passwd: '******',
+            id: 'afhs324',
+            passwd: '1985919',
             save: 'on'
         }
     }).on('response', function (response) {
@@ -45,8 +45,9 @@ function post(cookies) {
         url: postUrl,
         jar: jarSelf,
         form: {
-            subject: "fan",
-            content: "hello fan",
+            subject: "出租南邵地铁路劲世界城三居4300【个人】 ",
+            content: "已经在链家上挂了，照片请见 https://bj.lianjia.com/zufang/101101508717.html 1房屋特征\n南邵的路劲世界城3居，南北通透，格局棒，房子是高层，视野和光线特别好 离地铁5分钟家具齐全 有新风系统，集中供暖，空调，洗衣机，冰箱，抽烟烟机，餐桌，餐椅，单人床，双人床，柜子，茶几等 小区环境好，绿化的特别好 有小孩娱乐设施 小区管理严格，安全 价格整租暂定4300/月\n  3.房东心态 希望生活简单，爱惜房子的有缘人士住宿，房租接受押一付三！ 我们包物业费，和每年的取暖费。 联系电话：李女士 18910873393 "
+            ,
             signature: 0,
             id: 0
         },
